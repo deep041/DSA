@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Inserting like slice</title>
+</head>
+<body>
+
+    <input type="text" id="index" placeholder="Enter index" />
+    <input type="text" id="value" placeholder="Enter value" />
+    <button onclick="insertArr()">Insert</button>
+
+    <div id="arr"></div>
+    
+    <script>
+        let arr = [10, 20, 30, 50, 60, 70];
+        displayArr();
+        function insertArr() {
+            let index = Number(document.getElementById('index').value);
+            let value = Number(document.getElementById('value').value);
+    
+            for (let i = arr.length; i >= 0; i--) {
+                if (i >= index) {
+                    arr[i] = arr[i - 1];
+    
+                    if (i === index) {
+                        arr[i] = value;
+                    }
+                }
+
+                displayArr();
+            }
+        }
+
+        function displayArr() {
+            let string = '';
+            for (let i = 0; i < arr.length; i++) {
+                string += `${arr[i]} <br>`;
+            }
+
+            document.getElementById('arr').innerHTML = string;
+        }
+
+    </script>
+</body>
+</html>
